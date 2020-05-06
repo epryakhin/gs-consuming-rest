@@ -30,15 +30,15 @@ public class ConsumingRestApplication {
 		return builder.build();
 	}
 
-	private static byte[] hextToBytes(String hex) {
+	public static byte[] hextToBytes(String hex) {
 		return Hex.decode(hex);
 	}
 
-	private static BigInteger hextToBigInt(String hex) {
+	public static BigInteger hextToBigInt(String hex) {
 		return new BigInteger(1, Hex.decode(hex));
 	}
 
-	private static String bigIntToHex(BigInteger bigInt) {
+	public static String bigIntToHex(BigInteger bigInt) {
 		return Hex.toHexString(bigInt.toByteArray());
 	}
 
