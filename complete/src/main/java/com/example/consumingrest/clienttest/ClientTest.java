@@ -38,6 +38,9 @@ public class ClientTest {
         if (!M1.equals(ConsumingRestApplication.hextToBigInt(m1Hex))) {
             throw new RuntimeException("Something goes wrong. [M1]");
         }
+        if (!ConsumingRestApplication.hextToBigInt(ConsumingRestApplication.bigIntToHex(M1)).equals(ConsumingRestApplication.hextToBigInt(m1Hex))) {
+            throw new RuntimeException("Something goes wrong. [M1] double-Hex");
+        }
 
         System.out.println("A: "+ ConsumingRestApplication.bigIntToHex(A));
         System.out.println("S: " + ConsumingRestApplication.bigIntToHex(S));
