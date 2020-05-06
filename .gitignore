@@ -16,3 +16,4 @@ dependency-reduced-pom.xml
 *.iml
 README.html
 .DS_Store
+**/out

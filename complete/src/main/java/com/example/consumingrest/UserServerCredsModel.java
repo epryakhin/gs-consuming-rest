@@ -2,22 +2,25 @@ package com.example.consumingrest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
-@Value
-@Builder
+@Data
+//@Builder
+@NoArgsConstructor
 public class UserServerCredsModel {
 
-    private final String s;
+    private String s;
     @JsonProperty("B")
-    private final String b;
+    private String b;
     @JsonProperty("N")
-    private final String n;
-    private final String g;
+    private String n;
+    private String g;
     @JsonProperty("H")
-    private final String h;
-    private final String k;
+    private String h;
+    private String k;
     @JsonProperty("b")
-    private final String bb;
+    private String bb;
 
 }

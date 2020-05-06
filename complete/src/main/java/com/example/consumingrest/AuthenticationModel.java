@@ -2,19 +2,21 @@ package com.example.consumingrest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
-@Value
-@Builder
+@Data
+@NoArgsConstructor
 public class AuthenticationModel {
 
     @JsonProperty("M2")
-    private final String m2;
-    private final String x;
-    private final String u;
+    private String m2;
+    private String x;
+    private String u;
     @JsonProperty("S")
-    private final String ss;
-    private final Boolean authenticated;
-    private final String m1Server;
+    private String ss;
+    private Boolean authenticated;
+    private String m1Server;
 
 }
