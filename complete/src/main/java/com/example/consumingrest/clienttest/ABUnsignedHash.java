@@ -30,9 +30,9 @@ public class ABUnsignedHash {
 
     private static void appendHexToDigest(Digest digest, String hex) {
         byte[] bigIntBytes = Hex.decode(hex);
-        System.out.println("bigIntBytes: " + Arrays.toString(bigIntBytes));
+        System.out.println("bigSrcIntBytes: " + Arrays.toString(bigIntBytes));
         BigInteger bigInt = new BigInteger(1, bigIntBytes);
-        System.out.println("bigInt: " + bigInt);
+        System.out.println("bigIntBytes: " + Arrays.toString(bigInt.toByteArray()));
         byte[] unsignedBytes = BigIntegers.asUnsignedByteArray(bigInt);
         System.out.println("unsigned unsignedBytes: " + Arrays.toString(unsignedBytes));
         digest.update(unsignedBytes, 0, unsignedBytes.length);
