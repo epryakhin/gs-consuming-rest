@@ -14,7 +14,7 @@ public class ClientTest {
     private static String AHex = "94f36d129658ce5649a78ea8007e84d003a597c9f9968261fbcd4f47dbc2303bf4afa78bf0ab941e4e8cd2238a7dcca0fa098e9c30a6f6574193ab2df22b4a576545b5a807256aaf6e3a0579eea42d46ff635ded40b4a25352a214488931ca7e461a1c5606d1546bcbf858d0ec470cf08ad01feda933bb4c8bb8083d6ab3a43d5b5fd5268967caffeea5c0c0a68bf2e2ad1468ed5ba3beab905620e59c47e2e079c19b3ecbffaf8caa2b82509511c521f2f07a768339bed12865c5a6e72d5e67f33d032b298332b0bca5d9199e4f57dae314668ff08843024a7d8fdaa91eca98f537e7dbcd2a847f7b715d938839c3f7dd54010be2c28082e18fca6b09351c73";
     private static String BHex = "2d80515ad5d354bc75366a0420547ed12b65f8354d7ca2bb05c2ec4f7186ceb7d1b69487cd44c9a411077fadc113da039c3621b73979620d67007c731775ab774bf29b85b096fd332ae7e0022bac31d3d92c57c991a09e9f1f23bcfcce259df0294a6656f1d695a4217c032e5e3e2ccd85e46f5b1016ddfefbceaca696ddda3061f78329c9b511aba2182e9b4bee800409574df112b808b2ddca08268abbd299e9296c5d97ab68ae098e7d57296449c6e38f5598421be919b765e7cf157bd65c96f211172ae7c919fb561b154f4dba7ec29e0aa7a10b518a7435a8b3f0b48c4600011c21f1f065239520bc9949cc51445fbcb0992c2a956f8b17c901aa145459";
     private static String saltHex = "2873ea5b4ce2220291127d9c410ab08e2a595ee8dd42519fbb5a8a351c9c55910d6e0330753d9227680049e7ca1cc6931d1dd31ea1a671e0087ae42457ba88cc";
-    private static String m1Hex = "";
+    private static String m1Hex = "0d22c1c08ba07d10d37fe056c50b2fa07b25d86d60fee3709c3dc62090c82d8c586922f2b105324c1675ee269450dac7cbc0e8d9bc5a18fec57223c992a077244ba3824ad9ab4f6119438cfeb035b7ba5444011b99d713d054dab22994c99dda9cfe18ad194f43d1ee4ececc49723c0b7a39cc985e2aa3167051b915a2b7cac0378e45d1da58d6d0ca7b40f1496cf21f51d2a7c7327c0932182c76c5af810178a2d9cbe43f77f3bb67baca74c02722290fa46e9eb1b2a51672d6f62c47016e733bcc379155310bf7cd2250919311555438382a11f97a382bb2e58ba2d521037b1bcf2518a4452193b2cd888f645e86c5aa36337354ca15dc45ee766c59b5d324";
 
     public static void main(String[] args) throws CryptoException {
         SRP6Client srp6Client = new SRP6Client();
@@ -35,15 +35,15 @@ public class ClientTest {
         final BigInteger S = srp6Client.calculateSecret(ConsumingRestApplication.hextToBigInt(BHex));
         final BigInteger M1 = srp6Client.calculateClientEvidenceMessage();
 
+        System.out.println("A: "+ ConsumingRestApplication.bigIntToHex(A));
+        System.out.println("S: " + ConsumingRestApplication.bigIntToHex(S));
+        System.out.println("M1: "+ ConsumingRestApplication.bigIntToHex(M1));
+
         if (!M1.equals(ConsumingRestApplication.hextToBigInt(m1Hex))) {
             throw new RuntimeException("Something goes wrong. [M1]");
         }
         if (!ConsumingRestApplication.hextToBigInt(ConsumingRestApplication.bigIntToHex(M1)).equals(ConsumingRestApplication.hextToBigInt(m1Hex))) {
             throw new RuntimeException("Something goes wrong. [M1] double-Hex");
         }
-
-        System.out.println("A: "+ ConsumingRestApplication.bigIntToHex(A));
-        System.out.println("S: " + ConsumingRestApplication.bigIntToHex(S));
-        System.out.println("M1: "+ ConsumingRestApplication.bigIntToHex(M1));
     }
 }
